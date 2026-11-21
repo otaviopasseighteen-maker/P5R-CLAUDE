@@ -11,11 +11,11 @@
 ## ✨ Características
 
 ### 🎮 Conteúdo Completo
-- **9 Phantom Thieves** - Perfis detalhados, stats, Personas, confidantes
-- **22 Confidantes** - Rankings, habilidades, locais, prazos, prioridades
-- **8+ Palácios** - Mapas, Will Seeds, estratégias de chefes, Mementos
+- **10 personagens** - Perfis demonstrativos dos Phantom Thieves
+- **23 confidantes** - Arcana, habilidades e informações de referência
+- **9 palácios/áreas** - Informações de referência, Mementos e Maruki
 - **Mecânicas Profundas** - Combate, fusão, Social Stats, gestão de tempo
-- **110+ Faixas OST** - Player integrado, destaque para faixas icônicas
+- **10 faixas OST catalogadas** - Lista demonstrativa de faixas icônicas (sem reprodução de áudio)
 - **Novidades Royal** - Kasumi, Maruki, 3º Semestre, Thieves Den, Showtime
 
 ### 🎨 Design Imersivo
@@ -57,7 +57,7 @@
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/p5r-fan-site.git
+git clone https://github.com/otaviopasseighteen-maker/P5R-CLAUDE.git
 cd p5r-fan-site
 
 # Inicie servidor local (Python)
@@ -156,6 +156,8 @@ p5r-fan-site/
 
 ## 📊 Dados do Jogo (`data/game-data.json`)
 
+Os números abaixo refletem o conteúdo atualmente presente no JSON, não uma promessa de cobertura completa do jogo: 10 personagens, 23 confidantes, 9 palácios/áreas, 6 mecânicas, 10 faixas, 12 citações e 5 atualizações. O player da OST é apenas uma interface de seleção de metadados; áudio não está incluído.
+
 Estrutura principal:
 ```json
 {
@@ -215,6 +217,11 @@ Este é um **projeto de fã não oficial**.
 
 > **Disclaimer**: Este site não é afiliado, endossado ou patrocinado pela ATLUS, SEGA ou quaisquer detentores de direitos de Persona 5 Royal.
 
+## 🧪 Verificações locais
+
+Execute `node tests/smoke.test.js` para validar a estrutura dos dados. O CI também verifica a sintaxe JavaScript e a integridade básica do JSON.
+
+
 ## 🤝 Contribuindo
 
 Contribuições são bem-vindas! 
@@ -245,8 +252,8 @@ Contribuições são bem-vindas!
 
 ## 📞 Contato
 
-- **Issues**: [GitHub Issues](https://github.com/seu-usuario/p5r-fan-site/issues)
-- **Discussões**: [GitHub Discussions](https://github.com/seu-usuario/p5r-fan-site/discussions)
+- **Issues**: [GitHub Issues](https://github.com/otaviopasseighteen-maker/P5R-CLAUDE/issues)
+- **Discussões**: [GitHub Discussions](https://github.com/otaviopasseighteen-maker/P5R-CLAUDE/discussions)
 
 ---
 

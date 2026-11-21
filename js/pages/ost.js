@@ -100,8 +100,8 @@ const OSTPage = {
                         <span class="track-duration">${track.duration}</span>
                     </div>
                 </div>
-                <button class="track-play" data-track-index="${this.tracks.indexOf(track)}" aria-label="Tocar ${track.title}">
-                    <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <button class="track-play" data-track-index="${this.tracks.indexOf(track)}" aria-label="Selecionar ${track.title}">
+                    <span>Selecionar</span>
                 </button>
             </div>
         `).join('');
@@ -125,15 +125,22 @@ const OSTPage = {
     },
 
     initAudioPlayer: function() {
-        this.audio = new Audio();
-        this.audio.volume = 0.7;
-
-        this.audio.addEventListener('timeupdate', () => this.updateProgress());
-        this.audio.addEventListener('loadedmetadata', () => this.updateTotalTime());
-        this.audio.addEventListener('ended', () => this.nextTrack());
-        this.audio.addEventListener('play', () => this.updatePlayButton(true));
-        this.audio.addEventListener('pause', () => this.updatePlayButton(false));
-        this.audio.addEventListener('error', () => this.handleAudioError());
+        // The repository does not include licensed audio files or stream URLs.
+        // Keep the UI honest: metadata browsing is available, playback is not simulated.
+        this.audio = null;
+        if (this.playBtn) {
+            this.playBtn.disabled = true;
+            this.playBtn.setAttribute('aria-label', 'Player indisponível: áudio não incluído');
+        }
+        if (this.volumeSlider) this.volumeSlider.disabled = true;
+        ['btn-shuffle', 'btn-repeat'].forEach(id => {
+            const button = document.getElementById(id);
+            if (button) button.hidden = true;
+        });
+        const status = document.createElement('p');
+        status.className = 'player-unavailable-note';
+        status.textContent = 'Este projeto contém metadados da trilha sonora; arquivos de áudio não estão incluídos.';
+        this.trackArtist?.parentElement?.appendChild(status);
     },
 
     playTrack: function(index) {
@@ -152,40 +159,34 @@ const OSTPage = {
             card.classList.toggle('playing', i === index);
         });
 
-        // Load and play (using placeholder - in real implementation would use actual audio files)
-        this.audio.src = `data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAA==`; // Silent 1s WAV
-        this.audio.play().catch(() => {
-            // Autoplay blocked - show play button
-            this.updatePlayButton(false);
-        });
-
-        this.isPlaying = true;
-        this.updatePlayButton(true);
+        // Select metadata only; no audio files or streaming sources are shipped.
+        this.isPlaying = false;
+        this.updatePlayButton(false);
     },
 
     togglePlay: function() {
-        if (this.audio.paused) {
-            this.audio.play().catch(() => {});
-        } else {
-            this.audio.pause();
-        }
+        // Playback intentionally unavailable until licensed audio sources are added.
+        this.updatePlayButton(false);
     },
 
     prevTrack: function() {
+        if (!this.tracks.length) return;
         const newIndex = (this.currentTrackIndex - 1 + this.tracks.length) % this.tracks.length;
         this.playTrack(newIndex);
     },
 
     nextTrack: function() {
+        if (!this.tracks.length) return;
         const newIndex = (this.currentTrackIndex + 1) % this.tracks.length;
         this.playTrack(newIndex);
     },
 
-    setVolume: function(value) {
-        this.audio.volume = parseFloat(value);
+    setVolume: function() {
+        // No audio engine is initialized in this metadata-only player.
     },
 
     updateProgress: function() {
+        if (!this.audio || !this.progressFill || !this.currentTimeEl) return;
         if (this.audio.duration) {
             const progress = (this.audio.currentTime / this.audio.duration) * 100;
             this.progressFill.style.width = `${progress}%`;
@@ -194,21 +195,20 @@ const OSTPage = {
     },
 
     updateTotalTime: function() {
+        if (!this.audio || !this.totalTimeEl) return;
         this.totalTimeEl.textContent = this.formatTime(this.audio.duration);
     },
 
     updatePlayButton: function(playing) {
         this.isPlaying = playing;
-        this.playIcon.hidden = playing;
-        this.pauseIcon.hidden = !playing;
-        this.playBtn.setAttribute('aria-label', playing ? 'Pausar' : 'Tocar');
+        if (this.playIcon) this.playIcon.hidden = playing;
+        if (this.pauseIcon) this.pauseIcon.hidden = !playing;
+        this.playBtn?.setAttribute('aria-label', 'Player indisponível: áudio não incluído');
 
         // Update track card play buttons
         this.container?.querySelectorAll('.track-play').forEach((btn, i) => {
             const isCurrent = i === this.currentTrackIndex;
-            btn.innerHTML = isCurrent && playing
-                ? '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>'
-                : '<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+            btn.textContent = isCurrent ? 'Selecionada' : 'Selecionar';
         });
     },
 
