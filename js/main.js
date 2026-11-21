@@ -38,7 +38,7 @@ const App = {
 
     // --- Theme Management ---
     initTheme: function() {
-        const savedTheme = localStorage.getItem('p5r-theme');
+        const savedTheme = SafeStorage.get('p5r-theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         this.currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
         this.applyTheme(this.currentTheme);
@@ -51,7 +51,7 @@ const App = {
 
     applyTheme: function(theme) {
         document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('p5r-theme', theme);
+        SafeStorage.set('p5r-theme', theme);
         this.currentTheme = theme;
     },
 
@@ -469,16 +469,25 @@ const App = {
     registerServiceWorker: function() {
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').catch(() => {
-                    // SW registration failed, silently ignore
+                const mainScript = document.querySelector('script[src*="js/main.js"]');
+                if (mainScript) navigator.serviceWorker.register(new URL('../sw.js', mainScript.src)).catch(() => {
+                    // SW registration failed; the site remains usable without offline support.
                 });
             });
         }
     }
 };
 
+// --- Safe storage helpers (storage can be disabled or quota-limited) ---
+const SafeStorage = {
+    get: function(key) { try { return window.localStorage.getItem(key); } catch (_) { return null; } },
+    set: function(key, value) { try { window.localStorage.setItem(key, value); return true; } catch (_) { return false; } }
+};
+
 // --- Utility Functions ---
 const Utils = {
+    storageGet: function(key) { return SafeStorage.get(key); },
+    storageSet: function(key, value) { return SafeStorage.set(key, value); },
     debounce: function(func, wait) {
         let timeout;
         return function(...args) {

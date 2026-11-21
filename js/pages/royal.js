@@ -35,11 +35,11 @@ const RoyalPage = {
         // Checklist persistence
         this.checklistItems.forEach(checkbox => {
             const key = `p5r_checklist_${checkbox.closest('.checklist-panel').id}_${checkbox.parentElement.textContent.trim()}`;
-            const saved = localStorage.getItem(key);
+            const saved = window.P5RUtils?.storageGet(key) ?? null;
             if (saved === 'true') checkbox.checked = true;
 
             checkbox.addEventListener('change', () => {
-                localStorage.setItem(key, checkbox.checked);
+                window.P5RUtils?.storageSet(key, checkbox.checked);
                 this.updateProgress();
             });
         });
