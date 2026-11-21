@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tudo sobre as novidades exclusivas do Persona 5 Royal: Kasumi, Maruki, 3º Semestre, Thieves Den, Showtime, Grappling Hook, novos finais e diferenças do original.">
+    <title>Novidades do Royal | Persona 5 Royal</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loading-screen" class="loading-screen" role="status" aria-label="Carregando">
+        <div class="loading-content">
+            <div class="loading-mask"></div>
+            <div class="loading-text">
+                <span class="loading-title">PERSONA 5</span>
+                <span class="loading-subtitle">ROYAL</span>
+            </div>
+            <div class="loading-bar"><div class="loading-progress" id="loading-progress"></div></div>
+        </div>
+    </div>
+
+    <div class="cursor-trail" id="cursor-trail" aria-hidden="true"></div>
+
+    <nav class="main-nav" id="main-nav" role="navigation" aria-label="Navegação principal">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo" aria-label="Persona 5 Royal - Início">
+                <svg class="logo-mark" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 5 L10 25 L10 45 L30 55 L50 45 L50 25 Z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 15 L20 30 L30 45 L40 30 Z" fill="currentColor"/></svg>
+                <span class="logo-text">P5R</span>
+            </a>
+            <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Alternar menu"><span class="hamburger" aria-hidden="true"></span></button>
+            <ul class="nav-menu" id="nav-menu" role="menubar">
+                <li role="none"><a href="../index.html" class="nav-link" role="menuitem" data-page="home">Início</a></li>
+                <li role="none"><a href="characters.html" class="nav-link" role="menuitem" data-page="characters">Personagens</a></li>
+                <li role="none"><a href="confidants.html" class="nav-link" role="menuitem" data-page="confidants">Confidantes</a></li>
+                <li role="none"><a href="palaces.html" class="nav-link" role="menuitem" data-page="palaces">Palácios</a></li>
+                <li role="none"><a href="mechanics.html" class="nav-link" role="menuitem" data-page="mechanics">Mecânicas</a></li>
+                <li role="none"><a href="ost.html" class="nav-link" role="menuitem" data-page="ost">Trilha Sonora</a></li>
+                <li role="none"><a href="royal.html" class="nav-link active" role="menuitem" data-page="royal">Novidades Royal</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema" aria-pressed="false"><svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><g stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg><svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" role="main">
+        <section class="page-hero" aria-labelledby="page-title">
+            <div class="page-hero-bg"></div>
+            <div class="container">
+                <div class="page-hero-content" data-reveal>
+                    <span class="page-hero-badge">EDIÇÃO DEFINITIVA</span>
+                    <h1 id="page-title" class="page-hero-title">Persona 5 Royal</h1>
+                    <p class="page-hero-desc">Tudo que foi adicionado, alterado e expandido na versão definitiva. Novos personagens, semestre extra, mecânicas e finais.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="royal-overview" aria-labelledby="overview-title">
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <h2 id="overview-title" class="section-title">O Que Há de Novo</h2>
+                    <p class="section-subtitle">Resumo das principais adições do Royal sobre o original</p>
+                </div>
+
+                <div class="overview-grid" data-reveal>
+                    <article class="overview-card">
+                        <div class="overview-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                        <h3>2 Novos Confidantes</h3>
+                        <p>Kasumi Yoshizawa (Faith) e Takuto Maruki (Councillor). Ambos essenciais para o 3º Semestre e True Ending.</p>
+                        <span class="badge badge-gold">Exclusivo Royal</span>
+                    </article>
+                    <article class="overview-card">
+                        <div class="overview-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M12 22V12"/></svg></div>
+                        <h3>3º Semestre (Jan-Fev)</h3>
+                        <p>~60 dias de gameplay adicional. Novo Palácio, nova história, resolução dos arcos de Akechi e Kasumi.</p>
+                        <span class="badge badge-gold">Exclusivo Royal</span>
+                    </article>
+                    <article class="overview-card">
+                        <div class="overview-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg></div>
+                        <h3>Thieves Den</h3>
+                        <p>Sala de colecionáveis: arte conceitual, modelos 3D, música, conquistas. Gaste "Medals" para desbloquear.</p>
+                        <span class="badge badge-primary">Colecionáveis</span>
+                    </article>
+                    <article class="overview-card">
+                        <div class="overview-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M12 22V12"/><circle cx="12" cy="12" r="3"/></svg></div>
+                        <h3>Showtime Attacks</h3>
+                        <p>Ataques duplos cinematográficos entre pares de personagens. 7 combinações únicas com animações exclusivas.</p>
+                        <span class="badge badge-primary">Combate</span>
+                    </article>
+                    <article class="overview-card">
+                        <div class="overview-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M12 22V12"/><path d="M8 16h8"/></svg></div>
+                        <h3>Grappling Hook</h3>
+                        <p>Gancho de escalada para exploração vertical nos Palácios. Acessa áreas secretas e Will Seeds mais facilmente.</p>
+                        <span class="badge badge-success">Exploração</span>
+                    </article>
+                    <article class="overview-card">
+                        <div class="overview-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M12 22V12"/><path d="M8 16h8"/><circle cx="12" cy="12" r="2"/></svg></div>
+                        <h3>Fusion Alarm & José</h3>
+                        <p>Alarme de Fusão no Velvet Room (resultados especiais) e José em Mementos (flores por boosts).</p>
+                        <span class="badge badge-warning">Velvet Room</span>
+                    </article>
+                    <article class="overview-card">
+                        <div class="overview-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M12 22V12"/><path d="M8 16h8"/><path d="M16 12h-8"/></svg></div>
+                        <h3>2 Novas Áreas</h3>
+                        <p>Kichijoji (darts, bilhar, jazz club) e Shinjuku expandido. Novos locais para confidantes e tempo livre.</p>
+                        <span class="badge badge-success">Mapa</span>
+                    </article>
+                    <article class="overview-card">
+                        <div class="overview-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M12 22V12"/><path d="M8 16h8"/><path d="M16 8h-8"/></svg></div>
+                        <h3>Novos Finais</h3>
+                        <p>True Ending expandido + Maruki Ending (aceitar realidade ideal) + Bad Ending (rejeitar tudo). Escolhas importam.</p>
+                        <span class="badge badge-gold">História</span>
+                    </article>
+                    <article class="overview-card">
+                        <div class="overview-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M12 22V12"/><path d="M8 16h8"/><path d="M16 4h-8"/></svg></div>
+                        <h3>Quality of Life</h3>
+                        <p>Fast travel no mapa, auto-recovery após batalha, carregamento mais rápido, textos puláveis, dificuldade ajustável.</p>
+                        <span class="badge badge-primary">QoL</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="new-characters" aria-labelledby="chars-title">
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <h2 id="chars-title" class="section-title">Novos Personagens Principais</h2>
+                    <p class="section-subtitle">Kasumi Yoshizawa e Takuto Maruki - essenciais para a nova narrativa</p>
+                </div>
+
+                <div class="new-char-grid" data-reveal>
+                    <article class="new-char-card">
+                        <div class="new-char-image" style="background: linear-gradient(135deg, #e6e6fa 0%, #d8bfd8 100%);">
+                            <svg viewBox="0 0 24 24" width="80" height="80"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div class="new-char-content">
+                            <span class="new-char-badge badge badge-gold">FAITH ARCANA</span>
+                            <h3>Kasumi Yoshizawa</h3>
+                            <p class="new-char-role">Ginasta Rítmica / Violet</p>
+                            <p>Transferida para Shujin, ginasta prodígio com passado traumático. Sua confidente (Faith) desbloqueia no Rank 1 em 30/05. Persona: Cendrillon → Vanadis. Especialista em Bless e físico.</p>
+                            <div class="new-char-details">
+                                <div class="detail-item"><strong>Disponibilidade:</strong> 30/05 em diante</div>
+                                <div class="detail-item"><strong>Local:</strong> Ginásio / Leblanc</div>
+                                <div class="detail-item"><strong>Prazo:</strong> Flexível (antes do 3º Semestre)</div>
+                                <div class="detail-item"><strong>Habilidade Chave:</strong> Follow Up, Gymnastics</div>
+                            </div>
+                            <p class="new-char-note"><strong>Importante:</strong> Maxar Faith (Rank 10) é recomendado para conteúdo completo do 3º Semestre.</p>
+                        </div>
+                    </article>
+
+                    <article class="new-char-card">
+                        <div class="new-char-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <svg viewBox="0 0 24 24" width="80" height="80"><path d="M12 2L2 7l10 5 10-5-10-5z"/><circle cx="12" cy="16" r="4"/></svg>
+                        </div>
+                        <div class="new-char-content">
+                            <span class="new-char-badge badge badge-primary">COUNSELLOR ARCANA</span>
+                            <h3>Takuto Maruki</h3>
+                            <p class="new-char-role">Conselheiro Escolar / Psicólogo Cognitivo</p>
+                            <p>Novo conselheiro da Shujin. Pesquisa ciência cognitiva para "salvar" pessoas da dor. Confidente (Councillor) inicia automaticamente em 13/05. Persona: Azathoth → Adam Kadmon.</p>
+                            <div class="new-char-details">
+                                <div class="detail-item"><strong>Disponibilidade:</strong> 13/05 em diante</div>
+                                <div class="detail-item"><strong>Local:</strong> Shujin / Leblanc</div>
+                                <div class="detail-item"><strong>Prazo CRÍTICO:</strong> Rank 9 até 18/11</div>
+                                <div class="detail-item"><strong>Habilidade Chave:</strong> Detox X, Flow Boost</div>
+                            </div>
+                            <p class="new-char-note"><strong>CRÍTICO:</strong> Precisa Rank 9 ANTES de 18/11 para acessar o 3º Semestre e True Ending!</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="third-semester" aria-labelledby="semester-title">
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <h2 id="semester-title" class="section-title">3º Semestre - O Final Verdadeiro</h2>
+                    <p class="section-subtitle">Janeiro e Fevereiro adicionados. A realidade ideal de Maruki vs. a liberdade de escolher.</p>
+                </div>
+
+                <div class="semester-timeline" data-reveal>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Pré-requisitos (Antes de 18/11)</h3>
+                            <ul>
+                                <li>Maruki (Councillor) Rank 9 <span class="badge badge-gold">OBRIGATÓRIO</span></li>
+                                <li>Akechi (Justice) Rank 8+ <span class="badge badge-primary">Recomendado</span></li>
+                                <li>Kasumi (Faith) Rank 5+ <span class="badge badge-success">Para conteúdo extra</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>01/01 - Início do 3º Semestre</h3>
+                            <p>Realidade "ideal" de Maruki ativa. Todos vivem felizes... mas algo está errado. Akechi está vivo? Kasumi é Sumire?</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Janeiro - Investigação</h3>
+                            <p>Explore a realidade alterada. Descubra a verdade sobre a pesquisa de Maruki. Confronte as inconsistências.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Palácio de Maruki</h3>
+                            <p>Laboratório de pesquisa cognitiva. Puzzles baseados em percepção vs realidade. Boss: Azathoth → Adam Kadmon. Nível 60+.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Escolha Final (02/02)</h3>
+                            <p><strong>Recusar:</strong> True Ending - Lutar por liberdade, realidade imperfeita mas real.</p>
+                            <p><strong>Aceitar:</strong> Maruki Ending - Felicidade garantida, mas sem livre-arbítrio.</p>
+                            <p><strong>Falhar:</strong> Bad Ending - Maruki vence, realidade ideal permanente.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Pós-Jogo (True Ending)</h3>
+                            <p>Despedida final em 19/03. Epílogo expandido. New Game+ carrega: Personas, itens, stats sociais, compêndio, dinheiro, equipamentos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="differences" aria-labelledby="diff-title">
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <h2 id="diff-title" class="section-title">Royal vs Original - Principais Diferenças</h2>
+                </div>
+
+                <div class="diff-table-container" data-reveal>
+                    <table class="table">
+                        <thead>
+                            <tr><th>Aspecto</th><th>Persona 5 (Original)</th><th>Persona 5 Royal</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Confidantes</td><td>21</td><td>22 (+ Faith, Councillor)</td></tr>
+                            <tr><td>Phantom Thieves</td><td>9</td><td>9 (Kasumi temporária no 3º Semestre)</td></tr>
+                            <tr><td>Palácios Principais</td><td>8</td><td>8 + Maruki (3º Semestre)</td></tr>
+                            <tr><td>Semestres</td><td>2 (Abr-Set, Out-Dez)</td><td>3 (Adiciona Jan-Fev)</td></tr>
+                            <tr><td>Finais</td><td>2 (Normal, True)</td><td>3 (Normal, True, Maruki) + Bad</td></tr>
+                            <tr><td>Mementos</td><td>Básico</td><td>+ José, flores, stamps, Reaper melhor</td></tr>
+                            <tr><td>Velvet Room</td><td>Fusão normal/avançada</td><td>+ Fusion Alarm, acidentes, Guilhotina expandida</td></tr>
+                            <tr><td>Combate</td><td>Baton Pass, All-Out</td><td>+ Showtime, Technical expandido, 1 More melhor</td></tr>
+                            <tr><td>Exploração</td><td>Andar/correr</td><td>+ Grappling Hook, áreas verticais</td></tr>
+                            <tr><td>Áreas</td><td>Shibuya, Shinjuku, etc.</td><td>+ Kichijoji (darts, bilhar, jazz)</td></tr>
+                            <tr><td>Will Seeds</td><td>Não existiam</td><td>3 por Palácio = acessórios poderosos</td></tr>
+                            <tr><td>Thieves Den</td><td>Não existia</td><td>Colecionáveis, gallery, conquistas, medals</td></tr>
+                            <tr><td>QoL</td><td>Básico</td><td>Fast travel, auto-heal, skip texto, dificuldade</td></tr>
+                            <tr><td>Duração</td><td>~100h</td><td>~130-150h (completionist)</td></tr>
+                            <tr><td>Música</td><td>~80 faixas</td><td>110+ faixas (novas batalhas, boss, field)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="thieves-den" aria-labelledby="den-title">
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <h2 id="den-title" class="section-title">Thieves Den (Covilo dos Ladrões)</h2>
+                    <p class="section-subtitle">Sala de colecionáveis exclusiva do Royal. Gaste Medals para desbloquear conteúdo.</p>
+                </div>
+
+                <div class="den-grid" data-reveal>
+                    <article class="den-card">
+                        <h3>Modelos 3D</h3>
+                        <p>Visualize Personas, inimigos, personagens em 3D rotacionável. Inclui modelos não usados.</p>
+                        <span class="badge badge-primary">500+ Modelos</span>
+                    </article>
+                    <article class="den-card">
+                        <h3>Arte Conceitual</h3>
+                        <p>Concept art de personagens, Palácios, inimigos, UI. Rascunhos iniciais vs final.</p>
+                        <span class="badge badge-gold">200+ Peças</span>
+                    </article>
+                    <article class="den-card">
+                        <h3>Música (Jukebox)</h3>
+                        <p>Player completo da OST. Crie playlists. Inclui versões instrumentais e remixes.</p>
+                        <span class="badge badge-success">110+ Faixas</span>
+                    </article>
+                    <article class="den-card">
+                        <h3>Filmes/Cutscenes</h3>
+                        <p>Reassista todas as animações, eventos de confidente, finais. Com legendas.</p>
+                        <span class="badge badge-warning">40+ Vídeos</span>
+                    </article>
+                    <article class="den-card">
+                        <h3>Conquistas (Awards)</h3>
+                        <p>Desafios: maxar todos confidantes, pegar todas Will Seeds, derrotar Reaper, etc.</p>
+                        <span class="badge badge-primary">50+ Awards</span>
+                    </article>
+                    <article class="den-card">
+                        <h3>Card Battle (Tycoon)</h3>
+                        <p>Minigame de cartas estilo Triple Triad. Jogue contra confidantes. Ganhe Medals.</p>
+                        <span class="badge badge-gold">Minigame</span>
+                    </article>
+                </div>
+
+                <div class="den-tip" data-reveal>
+                    <h4>Como Ganhar Medals Rápido</h4>
+                    <ul>
+                        <li>Complete Awards (conquistas) - maiores recompensas</li>
+                        <li>Jogue Tycoon contra confidantes Rank 10</li>
+                        <li>Primeira vez vendo cada cutscene/modelo/arte dá bonus</li>
+                        <li>New Game+ carrega Medals não gastos</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="checklist" aria-labelledby="checklist-title">
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <h2 id="checklist-title" class="section-title">Checklist 100% Royal</h2>
+                    <p class="section-subtitle">Meta para completionists: Platinum Trophy / 100% Completion</p>
+                </div>
+
+                <div class="checklist-tabs" role="tablist" aria-label="Categorias do checklist" data-reveal>
+                    <button role="tab" class="checklist-tab active" data-checklist="story" aria-selected="true">História & Finais</button>
+                    <button role="tab" class="checklist-tab" data-checklist="confidants" aria-selected="false">Confidantes</button>
+                    <button role="tab" class="checklist-tab" data-checklist="collectibles" aria-selected="false">Colecionáveis</button>
+                    <button role="tab" class="checklist-tab" data-checklist="combat" aria-selected="false">Combate & Outros</button>
+                </div>
+
+                <div class="checklist-panels">
+                    <div class="checklist-panel active" role="tabpanel" id="checklist-story">
+                        <ul class="checklist-items">
+                            <li><label><input type="checkbox"> Ver Final Normal (Original)</label></li>
+                            <li><label><input type="checkbox"> Ver True Ending (Original)</label></li>
+                            <li><label><input type="checkbox"> <strong>Ver Maruki Ending (Aceitar realidade)</strong></label></li>
+                            <li><label><input type="checkbox"> <strong>Ver True Ending Royal (Recusar Maruki)</strong></label></li>
+                            <li><label><input type="checkbox"> Ver Bad Ending (Falhar prazo Maruki)</label></li>
+                            <li><label><input type="checkbox"> Completar 3º Semestre completo</label></li>
+                            <li><label><input type="checkbox"> New Game+ iniciado</label></li>
+                            <li><label><input type="checkbox"> New Game+ True Ending novamente</label></li>
+                        </ul>
+                    </div>
+                    <div class="checklist-panel" role="tabpanel" id="checklist-confidants">
+                        <ul class="checklist-items">
+                            <li><label><input type="checkbox"> Maxar todos 22 Confidantes (Rank 10)</label></li>
+                            <li><label><input type="checkbox"> Maruki (Councillor) Rank 10</label></li>
+                            <li><label><input type="checkbox"> Kasumi (Faith) Rank 10</label></li>
+                            <li><label><input type="checkbox"> Akechi (Justice/Councillor) Rank 10</label></li>
+                            <li><label><input type="checkbox"> Todos Phantom Thieves Rank 10</label></li>
+                            <li><label><input type="checkbox"> Todos Non-Party Rank 10</label></li>
+                            <li><label><input type="checkbox"> Chihaya (Fortune) Rank 10 - Affinity Reading</label></li>
+                        </ul>
+                    </div>
+                    <div class="checklist-panel" role="tabpanel" id="checklist-collectibles">
+                        <ul class="checklist-items">
+                            <li><label><input type="checkbox"> Todas 24 Will Seeds (8 Palácios × 3)</label></li>
+                            <li><label><input type="checkbox"> 3 Will Seeds do Palácio de Maruki</label></li>
+                            <li><label><input type="checkbox"> Todos 50+ Awards do Thieves Den</label></li>
+                            <li><label><input type="checkbox"> Compendium de Personas 100%</label></li>
+                            <li><label><input type="checkbox"> Todos Skill Cards obtidos</label></li>
+                            <li><label><input type="checkbox"> Todas armas da Guilhotina Elétrica</label></li>
+                            <li><label><input type="checkbox"> Todos livros lidos</label></li>
+                            <li><label><input type="checkbox"> Todos filmes assistidos</label></li>
+                        </ul>
+                    </div>
+                    <div class="checklist-panel" role="tabpanel" id="checklist-combat">
+                        <ul class="checklist-items">
+                            <li><label><input type="checkbox"> Derrotar Reaper (Ceifador) em Mementos</label></li>
+                            <li><label><input type="checkbox"> Ver todos 7 Showtime Attacks</label></li>
+                            <li><label><input type="checkbox"> Criar Personas lendárias: Yoshitsune, Lucifer, Satanael (NG+)</label></li>
+                            <li><label><input type="checkbox"> Ativar Fusion Alarm 10+ vezes</label></li>
+                            <li><label><input type="checkbox"> Completar todos Requests de Mementos</label></li>
+                            <li><label><input type="checkbox"> Stamp Rally Mementos completo</label></li>
+                            <li><label><input type="checkbox"> Coletar todas flores para José</label></li>
+                            <li><label><input type="checkbox"> Platinum Trophy conquistado</label></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo"><svg class="logo-mark" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 5 L10 25 L10 45 L30 55 L50 45 L50 25 Z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 15 L20 30 L30 45 L40 30 Z" fill="currentColor"/></svg><span>P5R</span></a>
+                    <p class="footer-tagline">"A rebelião começa no coração."</p>
+                </div>
+                <nav class="footer-nav" aria-label="Links do rodapé">
+                    <div class="footer-nav-group"><h4>Explorar</h4><ul><li><a href="characters.html">Phantom Thieves</a></li><li><a href="confidants.html">Confidantes</a></li><li><a href="palaces.html">Palácios</a></li><li><a href="mechanics.html">Mecânicas</a></li></ul></div>
+                    <div class="footer-nav-group"><h4>Recursos</h4><ul><li><a href="ost.html">Trilha Sonora</a></li><li><a href="royal.html">Novidades Royal</a></li></ul></div>
+                    <div class="footer-nav-group"><h4>Comunidade</h4><ul><li><a href="#">GitHub</a></li><li><a href="#">Discord</a></li><li><a href="#">Reddit</a></li></ul></div>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-legal"><p>&copy; 2024-2025 Persona 5 Royal Fan Site. Projeto não oficial.</p><p>Persona 5 Royal &copy; ATLUS / SEGA.</p></div>
+                <div class="footer-social"><a href="#" class="social-link" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a><a href="#" class="social-link" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a></div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Voltar ao topo" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+    <script src="../data/game-data.json"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/pages/royal.js"></script>
+</body>
+</html>

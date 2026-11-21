@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Persona 5 Royal - Site imersivo para fãs dos Phantom Thieves. Explore personagens, confidantes, palácios, mecânicas e muito mais.">
+    <meta name="theme-color" content="#C70000">
+    <title>Persona 5 Royal | Phantom Thieves of Hearts</title>
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="css/main.css" as="style">
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="data/game-data.json" as="fetch" crossorigin="anonymous">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" id="structured-data"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen" role="status" aria-label="Carregando o Metaverso">
+        <div class="loading-content">
+            <div class="loading-mask"></div>
+            <div class="loading-text">
+                <span class="loading-title">TAKE</span>
+                <span class="loading-subtitle">YOUR</span>
+                <span class="loading-title">HEART</span>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress" id="loading-progress"></div>
+            </div>
+            <div class="loading-percentage" id="loading-percentage">0%</div>
+        </div>
+    </div>
+
+    <!-- Cursor Trail Effect -->
+    <div class="cursor-trail" id="cursor-trail" aria-hidden="true"></div>
+
+    <!-- Background Atmosphere -->
+    <div class="atmosphere" aria-hidden="true">
+        <div class="atmosphere-layer" data-depth="1"></div>
+        <div class="atmosphere-layer" data-depth="2"></div>
+        <div class="atmosphere-layer" data-depth="3"></div>
+        <canvas id="particle-canvas" class="particle-canvas"></canvas>
+    </div>
+
+    <!-- Skip to Main Content -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="main-nav" role="navigation" aria-label="Navegação principal">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Persona 5 Royal - Início">
+                <svg class="logo-mark" viewBox="0 0 60 60" aria-hidden="true">
+                    <path d="M30 5 L10 25 L10 45 L30 55 L50 45 L50 25 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                    <path d="M30 15 L20 30 L30 45 L40 30 Z" fill="currentColor"/>
+                </svg>
+                <span class="logo-text">P5R</span>
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Alternar menu">
+                <span class="hamburger" aria-hidden="true"></span>
+            </button>
+
+            <ul class="nav-menu" id="nav-menu" role="menubar">
+                <li role="none"><a href="index.html" class="nav-link active" role="menuitem" data-page="home">Início</a></li>
+                <li role="none"><a href="pages/characters.html" class="nav-link" role="menuitem" data-page="characters">Personagens</a></li>
+                <li role="none"><a href="pages/confidants.html" class="nav-link" role="menuitem" data-page="confidants">Confidantes</a></li>
+                <li role="none"><a href="pages/palaces.html" class="nav-link" role="menuitem" data-page="palaces">Palácios</a></li>
+                <li role="none"><a href="pages/mechanics.html" class="nav-link" role="menuitem" data-page="mechanics">Mecânicas</a></li>
+                <li role="none"><a href="pages/ost.html" class="nav-link" role="menuitem" data-page="ost">Trilha Sonora</a></li>
+                <li role="none"><a href="pages/royal.html" class="nav-link" role="menuitem" data-page="royal">Novidades Royal</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema" aria-pressed="false">
+                    <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><g stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-github" aria-label="GitHub do projeto">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section class="hero" id="hero" aria-labelledby="hero-title">
+            <div class="hero-background">
+                <div class="hero-bg-layer" data-parallax="0.3"></div>
+                <div class="hero-bg-layer" data-parallax="0.5"></div>
+                <div class="hero-bg-layer" data-parallax="0.7"></div>
+                <div class="hero-overlay"></div>
+            </div>
+
+            <div class="hero-content">
+                <div class="hero-badge" data-reveal>
+                    <span class="badge-text">PHANTOM THIEVES OF HEARTS</span>
+                    <span class="badge-accent" aria-hidden="true">★</span>
+                </div>
+
+                <h1 id="hero-title" class="hero-title" data-reveal>
+                    <span class="title-line">Persona 5</span>
+                    <span class="title-line title-royal">Royal</span>
+                </h1>
+
+                <p class="hero-tagline" data-reveal>
+                    <span class="tagline-jp" lang="ja">心の怪盗団</span>
+                    <span class="tagline-pt">Roube a verdade. Mude o mundo.</span>
+                </p>
+
+                <div class="hero-actions" data-reveal>
+                    <a href="#explore" class="btn btn-primary btn-large">
+                        <span class="btn-text">Explorar o Metaverso</span>
+                        <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="pages/characters.html" class="btn btn-secondary btn-large">
+                        <span class="btn-text">Conheça a Equipe</span>
+                        <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </a>
+                </div>
+
+                <div class="hero-stats" data-reveal>
+                    <div class="stat">
+                        <span class="stat-value" data-count="9">0</span>
+                        <span class="stat-label">Phantom Thieves</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" data-count="22">0</span>
+                        <span class="stat-label">Confidantes</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" data-count="8">0</span>
+                        <span class="stat-label">Palácios Principais</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" data-count="120">0</span>
+                        <span class="stat-label">Horas de Jogo</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-scroll" id="hero-scroll" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                <span>Role para explorar</span>
+            </div>
+        </section>
+
+        <!-- Quick Access Cards -->
+        <section id="explore" class="quick-access" aria-labelledby="explore-title">
+            <div class="section-header" data-reveal>
+                <h2 id="explore-title" class="section-title">Explore o Metaverso</h2>
+                <p class="section-subtitle">Navegue pelas seções principais do site</p>
+            </div>
+
+            <div class="access-grid" role="list">
+                <article class="access-card" role="listitem" data-reveal>
+                    <a href="pages/characters.html" class="card-link">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        </div>
+                        <h3 class="card-title">Phantom Thieves</h3>
+                        <p class="card-desc">Conheça cada membro da equipe, suas Personas, habilidades e arcos de história</p>
+                        <span class="card-meta">9 Personagens</span>
+                    </a>
+                </article>
+
+                <article class="access-card" role="listitem" data-reveal>
+                    <a href="pages/confidants.html" class="card-link">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3 class="card-title">Sistema de Confidantes</h3>
+                        <p class="card-desc">Guia completo de todos os 22 confidantes, rankings, habilidades e melhores escolhas</p>
+                        <span class="card-meta">22 Confidantes</span>
+                    </a>
+                </article>
+
+                <article class="access-card" role="listitem" data-reveal>
+                    <a href="pages/palaces.html" class="card-link">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M21 12V7H5v5"/><path d="M3 7v10"/><path d="M21 7v10"/><path d="M7 17h10"/><path d="M12 7v10"/></svg>
+                        </div>
+                        <h3 class="card-title">Palácios & Mementos</h3>
+                        <p class="card-desc">Mapas, estratégias, chefes, puzzles e segredos de cada Palace e do Mementos</p>
+                        <span class="card-meta">8 Palácios + Depths</span>
+                    </a>
+                </article>
+
+                <article class="access-card" role="listitem" data-reveal>
+                    <a href="pages/mechanics.html" class="card-link">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </div>
+                        <h3 class="card-title">Mecânicas de Jogo</h3>
+                        <p class="card-desc">Sistema de combate, fusão de Personas, Social Stats, atividades e dicas avançadas</p>
+                        <span class="card-meta">Guias Completos</span>
+                    </a>
+                </article>
+
+                <article class="access-card" role="listitem" data-reveal>
+                    <a href="pages/ost.html" class="card-link">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><polygon points="11 19 2 12 11 5 11 19"/><path d="M22 19l-7-7 7-7"/><path d="M19 3v18"/></svg>
+                        </div>
+                        <h3 class="card-title">Trilha Sonora (OST)</h3>
+                        <p class="card-desc">Todas as músicas, compositores, letras traduzidas e player integrado</p>
+                        <span class="card-meta">110+ Faixas</span>
+                    </a>
+                </article>
+
+                <article class="access-card" role="listitem" data-reveal>
+                    <a href="pages/royal.html" class="card-link">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <h3 class="card-title">Novidades do Royal</h3>
+                        <p class="card-desc">Kasumi, Maruki, 3º Semestre, Thieves Den, novos finais e diferenças do original</p>
+                        <span class="card-meta">Conteúdo Exclusivo</span>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Featured Content -->
+        <section class="featured" aria-labelledby="featured-title">
+            <div class="section-header" data-reveal>
+                <h2 id="featured-title" class="section-title">Destaques</h2>
+                <p class="section-subtitle">Conteúdo selecionado para sua jornada</p>
+            </div>
+
+            <div class="featured-tabs" role="tablist" aria-label="Categorias de destaque">
+                <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-characters" id="tab-characters">Personagens</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-confidants" id="tab-confidants">Confidantes</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-tips" id="tab-tips">Dicas & Builds</button>
+            </div>
+
+            <div class="tab-panels">
+                <div class="tab-panel active" role="tabpanel" id="panel-characters" aria-labelledby="tab-characters">
+                    <div class="featured-grid" id="featured-characters"></div>
+                </div>
+                <div class="tab-panel" role="tabpanel" id="panel-confidants" aria-labelledby="tab-confidants">
+                    <div class="featured-grid" id="featured-confidants"></div>
+                </div>
+                <div class="tab-panel" role="tabpanel" id="panel-tips" aria-labelledby="tab-tips">
+                    <div class="featured-grid" id="featured-tips"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Carousel -->
+        <section class="quotes" aria-labelledby="quotes-title">
+            <h2 id="quotes-title" class="visually-hidden">Frases Marcantes</h2>
+            <div class="quotes-track" id="quotes-track" aria-live="polite">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- News/Updates -->
+        <section class="updates" aria-labelledby="updates-title">
+            <div class="section-header" data-reveal>
+                <h2 id="updates-title" class="section-title">Atualizações & Comunidade</h2>
+                <p class="section-subtitle">Mantenha-se informado</p>
+            </div>
+
+            <div class="updates-grid" id="updates-grid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo" aria-label="Persona 5 Royal - Início">
+                        <svg class="logo-mark" viewBox="0 0 60 60" aria-hidden="true">
+                            <path d="M30 5 L10 25 L10 45 L30 55 L50 45 L50 25 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <path d="M30 15 L20 30 L30 45 L40 30 Z" fill="currentColor"/>
+                        </svg>
+                        <span>P5R</span>
+                    </a>
+                    <p class="footer-tagline">"A rebelião começa no coração."</p>
+                </div>
+
+                <nav class="footer-nav" aria-label="Links do rodapé">
+                    <div class="footer-nav-group">
+                        <h4>Explorar</h4>
+                        <ul>
+                            <li><a href="pages/characters.html">Phantom Thieves</a></li>
+                            <li><a href="pages/confidants.html">Confidantes</a></li>
+                            <li><a href="pages/palaces.html">Palácios</a></li>
+                            <li><a href="pages/mechanics.html">Mecânicas</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-group">
+                        <h4>Recursos</h4>
+                        <ul>
+                            <li><a href="pages/ost.html">Trilha Sonora</a></li>
+                            <li><a href="pages/royal.html">Novidades Royal</a></li>
+                            <li><a href="#">Guias de Build</a></li>
+                            <li><a href="#">Speedrun Strats</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-group">
+                        <h4>Comunidade</h4>
+                        <ul>
+                            <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+                            <li><a href="#">Discord</a></li>
+                            <li><a href="#">Reddit</a></li>
+                            <li><a href="#">Wiki Oficial</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>&copy; 2024-2025 Persona 5 Royal Fan Site. Projeto não oficial feito por fãs, para fãs.</p>
+                    <p>Persona 5 Royal © ATLUS / SEGA. Todos os direitos reservados aos respectivos proprietários.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter" class="social-link"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                    <a href="#" aria-label="YouTube" class="social-link"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+                    <a href="#" aria-label="Discord" class="social-link"><svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.683 4.37a.068.068 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.08.08 0 0 0 .031.057 19.9 19.9 0 0 0 5.994 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-6.486.077.077 0 0 1 .006-.128 10.2 10.2 0 0 0 .372-.256.076.076 0 0 1 .079-.031c3.572-1.21 7.426-1.21 10.998 0 .14.09.282.19.39.32.076.112.045.266-.018.358a10.254 10.254 0 0 1-.418.406.077.077 0 0 0-.007.127 13.073 13.073 0 0 1-1.831 6.486.076.076 0 0 1-.07.047A14 14 0 0 0 18.07 21a.077.077 0 0 0 .083-.028c2.748-.97 5.357-2.57 7.168-4.762a.061.061 0 0 0-.031-.098 20.162 20.162 0 0 0-.678-2.011.068.068 0 0 0-.033-.027z"/><circle cx="8.5" cy="13.5" r="1.5"/><circle cx="15.5" cy="13.5" r="1.5"/></svg></a>
+                    <a href="#" aria-label="GitHub" class="social-link"><svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Voltar ao topo" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="data/game-data.json"></script>
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
