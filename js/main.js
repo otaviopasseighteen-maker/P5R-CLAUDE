@@ -469,7 +469,8 @@ const App = {
     registerServiceWorker: function() {
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register(new URL('./sw.js', document.baseURI)).catch(() => {
+                const mainScript = document.querySelector('script[src*="js/main.js"]');
+                if (mainScript) navigator.serviceWorker.register(new URL('../sw.js', mainScript.src)).catch(() => {
                     // SW registration failed; the site remains usable without offline support.
                 });
             });
