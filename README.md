@@ -1,6 +1,6 @@
 # Persona 5 Royal Fan Site
 
-> Um site imersivo e completo para fãs de Persona 5 Royal, construído com tecnologias web modernas e design fiel à estética do jogo.
+> Um site de fãs de Persona 5 Royal, com páginas de referência, interface temática e dados em JSON. O conteúdo ainda é demonstrativo e não representa uma enciclopédia completa.
 
 ![Persona 5 Royal](https://img.shields.io/badge/Persona_5_Royal-Fan_Site-c70000?style=for-the-badge&logo=playstation&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -25,21 +25,22 @@
 - Cursor trail effect temático
 - Loading screen com animação "TAKE YOUR HEART"
 
-### ♿ Acessibilidade (WCAG 2.1 AA)
+### ♿ Recursos de acessibilidade
+
+O projeto inclui alguns recursos de acessibilidade, mas ainda não passou por auditoria formal WCAG.
 - Semântica HTML5 correta
 - ARIA labels e roles
 - Navegação por teclado completa
 - Focus visible states
 - Suporte a `prefers-reduced-motion`
-- Contraste de cores validado
+- Contraste precisa de validação manual e automatizada
 - Skip links
 
 ### ⚡ Performance
 - Service Worker para cache offline
-- Lazy loading de imagens
-- CSS/JS minificados (produção)
-- Critical CSS inlined
-- Font display swap
+- Cache offline via Service Worker (quando hospedado em HTTPS ou localhost)
+- Fontes externas com `display=swap`
+- Arquivos CSS/JS servidos sem etapa de build ou minificação
 
 ### 📱 Responsivo
 - Mobile-first approach
@@ -58,7 +59,7 @@
 ```bash
 # Clone o repositório
 git clone https://github.com/otaviopasseighteen-maker/P5R-CLAUDE.git
-cd p5r-fan-site
+cd P5R-CLAUDE
 
 # Inicie servidor local (Python)
 python -m http.server 8000
@@ -75,13 +76,10 @@ Acesse `http://localhost:8000`
 ### Deploy
 
 #### GitHub Pages
-```bash
-# Build (se usando build tools)
-npm run build
-
-# Deploy para gh-pages branch
-git subtree push --prefix . origin gh-pages
-```
+1. Abra **Settings → Pages** no repositório.
+2. Em **Build and deployment**, escolha **Deploy from a branch**.
+3. Selecione a branch `main` e a pasta `/ (root)`, depois salve.
+4. Aguarde a publicação. Não existe etapa de build/npm neste site estático.
 
 #### Netlify/Vercel
 - Conecte o repositório
