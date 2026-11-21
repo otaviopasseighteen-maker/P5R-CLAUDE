@@ -1,6 +1,6 @@
 # Persona 5 Royal Fan Site
 
-> Um site imersivo e completo para fãs de Persona 5 Royal, construído com tecnologias web modernas e design fiel à estética do jogo.
+> Um site de fãs de Persona 5 Royal, com páginas de referência, interface temática e dados em JSON. O conteúdo ainda é demonstrativo e não representa uma enciclopédia completa.
 
 ![Persona 5 Royal](https://img.shields.io/badge/Persona_5_Royal-Fan_Site-c70000?style=for-the-badge&logo=playstation&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -11,11 +11,11 @@
 ## ✨ Características
 
 ### 🎮 Conteúdo Completo
-- **9 Phantom Thieves** - Perfis detalhados, stats, Personas, confidantes
-- **22 Confidantes** - Rankings, habilidades, locais, prazos, prioridades
-- **8+ Palácios** - Mapas, Will Seeds, estratégias de chefes, Mementos
+- **10 personagens** - Perfis demonstrativos dos Phantom Thieves
+- **23 confidantes** - Arcana, habilidades e informações de referência
+- **9 palácios/áreas** - Informações de referência, Mementos e Maruki
 - **Mecânicas Profundas** - Combate, fusão, Social Stats, gestão de tempo
-- **110+ Faixas OST** - Player integrado, destaque para faixas icônicas
+- **10 faixas OST catalogadas** - Lista demonstrativa de faixas icônicas (sem reprodução de áudio)
 - **Novidades Royal** - Kasumi, Maruki, 3º Semestre, Thieves Den, Showtime
 
 ### 🎨 Design Imersivo
@@ -25,21 +25,22 @@
 - Cursor trail effect temático
 - Loading screen com animação "TAKE YOUR HEART"
 
-### ♿ Acessibilidade (WCAG 2.1 AA)
+### ♿ Recursos de acessibilidade
+
+O projeto inclui alguns recursos de acessibilidade, mas ainda não passou por auditoria formal WCAG.
 - Semântica HTML5 correta
 - ARIA labels e roles
 - Navegação por teclado completa
 - Focus visible states
 - Suporte a `prefers-reduced-motion`
-- Contraste de cores validado
+- Contraste precisa de validação manual e automatizada
 - Skip links
 
 ### ⚡ Performance
 - Service Worker para cache offline
-- Lazy loading de imagens
-- CSS/JS minificados (produção)
-- Critical CSS inlined
-- Font display swap
+- Cache offline via Service Worker (quando hospedado em HTTPS ou localhost)
+- Fontes externas com `display=swap`
+- Arquivos CSS/JS servidos sem etapa de build ou minificação
 
 ### 📱 Responsivo
 - Mobile-first approach
@@ -57,8 +58,8 @@
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/p5r-fan-site.git
-cd p5r-fan-site
+git clone https://github.com/otaviopasseighteen-maker/P5R-CLAUDE.git
+cd P5R-CLAUDE
 
 # Inicie servidor local (Python)
 python -m http.server 8000
@@ -75,13 +76,10 @@ Acesse `http://localhost:8000`
 ### Deploy
 
 #### GitHub Pages
-```bash
-# Build (se usando build tools)
-npm run build
-
-# Deploy para gh-pages branch
-git subtree push --prefix . origin gh-pages
-```
+1. Abra **Settings → Pages** no repositório.
+2. Em **Build and deployment**, escolha **Deploy from a branch**.
+3. Selecione a branch `main` e a pasta `/ (root)`, depois salve.
+4. Aguarde a publicação. Não existe etapa de build/npm neste site estático.
 
 #### Netlify/Vercel
 - Conecte o repositório
@@ -156,6 +154,8 @@ p5r-fan-site/
 
 ## 📊 Dados do Jogo (`data/game-data.json`)
 
+Os números abaixo refletem o conteúdo atualmente presente no JSON, não uma promessa de cobertura completa do jogo: 10 personagens, 23 confidantes, 9 palácios/áreas, 6 mecânicas, 10 faixas, 12 citações e 5 atualizações. O player da OST é apenas uma interface de seleção de metadados; áudio não está incluído.
+
 Estrutura principal:
 ```json
 {
@@ -215,6 +215,11 @@ Este é um **projeto de fã não oficial**.
 
 > **Disclaimer**: Este site não é afiliado, endossado ou patrocinado pela ATLUS, SEGA ou quaisquer detentores de direitos de Persona 5 Royal.
 
+## 🧪 Verificações locais
+
+Execute `node tests/smoke.test.js` para validar a estrutura dos dados. O CI também verifica a sintaxe JavaScript e a integridade básica do JSON.
+
+
 ## 🤝 Contribuindo
 
 Contribuições são bem-vindas! 
@@ -245,8 +250,8 @@ Contribuições são bem-vindas!
 
 ## 📞 Contato
 
-- **Issues**: [GitHub Issues](https://github.com/seu-usuario/p5r-fan-site/issues)
-- **Discussões**: [GitHub Discussions](https://github.com/seu-usuario/p5r-fan-site/discussions)
+- **Issues**: [GitHub Issues](https://github.com/otaviopasseighteen-maker/P5R-CLAUDE/issues)
+- **Discussões**: [GitHub Discussions](https://github.com/otaviopasseighteen-maker/P5R-CLAUDE/discussions)
 
 ---
 
