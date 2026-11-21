@@ -128,11 +128,9 @@ const OSTPage = {
         // The repository does not include licensed audio files or stream URLs.
         // Keep the UI honest: metadata browsing is available, playback is not simulated.
         this.audio = null;
-        if (this.playBtn) {
-            this.playBtn.disabled = true;
-            this.playBtn.setAttribute('aria-label', 'Player indisponível: áudio não incluído');
-        }
-        if (this.volumeSlider) this.volumeSlider.disabled = true;
+        if (this.playBtn) this.playBtn.hidden = true;
+        document.querySelector('.progress-bar-container')?.setAttribute('hidden', '');
+        document.querySelector('.volume-control')?.setAttribute('hidden', '');
         ['btn-shuffle', 'btn-repeat'].forEach(id => {
             const button = document.getElementById(id);
             if (button) button.hidden = true;
